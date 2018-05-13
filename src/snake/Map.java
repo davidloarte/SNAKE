@@ -20,16 +20,16 @@ public class Map {
 			for(int c = 0; c < col; c++) {
 				if (((f) == minf || (f) == maxf)) {
 					if ( ((f == minf)&&(f == minc)) ||  ((f == minf)&&(f == maxc)) || ((f == maxf) && (f == minc)) || ((f == maxf)&&(f== maxc)))
-						System.out.println("1", matriz[f][c]);
+						System.out.print(String.format("1", matriz[f][c]));
 					else 
-						System.out.println("1");
+						System.out.print("1");
 				}
 				else
 					if(((f) >= (minf)) || ((f) <= (maxf) )) {
 						if( (c < (minc+1)) || (c > (maxc - 1)) )
-						System.out.println("1", matriz[f][c]);
+						System.out.print(String.format("1", matriz[f][c]));
 						else 
-							System.out.println("0");
+							System.out.print("0");
 					}
 			}
 			System.out.println();
@@ -38,3 +38,4 @@ public class Map {
 	}
 
 }
+
