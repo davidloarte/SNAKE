@@ -13,7 +13,13 @@ public class Map {
 		int maxf = fila -1;
 		int maxc = col - 1;
 		
+		int comidafila = (int) (Math.random() * fila);
+		int comidacols = (int) (Math.random() * col);
+		int obstaculosfila = (int) (Math.random() * fila);
+		int obstaculoscols = (int) (Math.random() * col);
+		int contadoritem = 0;
 		char matriz[][] = new char[fila][col];
+		
 		
 		//creamos el marco del mapa
 		for(int f = 0; f < fila; f++ ) {
@@ -29,12 +35,22 @@ public class Map {
 						if( (c < (minc+1)) || (c > (maxc - 1)) )
 						System.out.print(String.format("1", matriz[f][c]));
 						else 
+							if(contadoritem == 0) {
+								System.out.print(String.format("2", matriz[comidafila][comidacols]));
+								System.out.print(String.format("3", matriz[obstaculosfila][obstaculoscols]));
+								contadoritem++;
+							}
 							System.out.print("0");
 					}
 			}
 			System.out.println();
 		}
-
+				
+		
+		
+		System.out.print(String.format("2", matriz[comidafila][comidacols]));
+		System.out.print(String.format("3", matriz[obstaculosfila][obstaculoscols]));
+		
 	}
 
 }
