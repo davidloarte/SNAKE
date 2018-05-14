@@ -6,7 +6,7 @@ public class Main {
 		//Map miMapa = new Map();
 		//miMapa.map();
 		
-		Mapv2 mapa = new Mapv2(10,5);
+		Mapv2 mapa = new Mapv2(10,12);
 		System.out.println( "max X: "+ mapa.getMapMaxX());
 		System.out.println( "max Y: "+ mapa.getMapMaxY());
 		//System.out.println( "max X: "+ mapa.generateFood() );
@@ -15,7 +15,10 @@ public class Main {
 		
 		mapa.generateFood();
 		
-		Mapv2.tiles[][] mapo = mapa.getMap();
+		MapTile.Tile[][] mapo = mapa.getMap();
+		
+		mapa.generateObstacle();
+		mapa.generateObstacle();
 		
 		/*
 		for(int i=0; i< mapa.getMapMaxX(); i++) {

@@ -4,6 +4,7 @@
 package snake;
 
 import java.util.Random;
+import snake.MapTile.Tile;
 
 /**
  * @author agarcia
@@ -20,24 +21,36 @@ public class Mapv2 {
 		
 		this(10,10); // If we don't get dimensions passed, use default ones;
 	}
+	public Mapv2(int dim)
+	{
+		// Create a square map of given dimension
+		this(dim, dim);
+	}
 	public Mapv2(int cols, int rows)
 	{
+		this(cols,rows,1);
+	}
+	public Mapv2(int cols, int rows, int frame) {
+		// Set map dimensions 
 		MapMaxX = cols;
 		MapMaxY = rows;
-		mapa = new tiles[MapMaxX][MapMaxY];
-
+		mapa = new Tile[MapMaxX][MapMaxY];
+		// Allocate map with set dimensions
 		for (int i = 0; i <MapMaxX; i++)
 	        for (int j = 0; j <MapMaxY; j++)
-	            mapa[i][j] = tiles.unfilled;
+	            mapa[i][j] = Tile.UNFILLED;
+		// then we create the frame if we are instructed to do so
+		if(frame != 0)
+			this.generateMapFrame();
 	}
 	
-	public enum tiles {pared, snake, obstaculo, comida, unfilled};
+	// The array containing the map
+	private Tile [][] mapa;
 	
-	private tiles [][] mapa;
-	
+	// The XY dimensions of the map
 	private int MapMaxX, MapMaxY;
 	
-	
+	// this will create 
 	public int [] generateFood(){
 		Random rand = new Random();
 		int FoodCoordX;
@@ -45,12 +58,27 @@ public class Mapv2 {
 		do {
 			FoodCoordX =  rand.nextInt(MapMaxX);
 			FoodCoordY =  rand.nextInt(MapMaxY);
-		}while(mapa[FoodCoordX][FoodCoordY] != tiles.unfilled);
-		
-		mapa[FoodCoordX][FoodCoordY] = tiles.comida;
-		
+		}while(mapa[FoodCoordX][FoodCoordY] != Tile.UNFILLED);
+		mapa[FoodCoordX][FoodCoordY] = Tile.FOOD;
 		return new int [] {FoodCoordX,FoodCoordY};
-		
+	}
+	public int [] generateObstacle(){
+		Random rand = new Random();
+		int ObsCoordX;
+		int ObsCoordY; 
+		do {
+			ObsCoordX =  rand.nextInt(MapMaxX);
+			ObsCoordY =  rand.nextInt(MapMaxY);
+		}while(mapa[ObsCoordX][ObsCoordY] != Tile.UNFILLED);
+		mapa[ObsCoordX][ObsCoordY] = Tile.OBSTACLE;
+		return new int [] {ObsCoordX,ObsCoordY};
+	}	
+	private void generateMapFrame()
+	{
+		for (int i = 0; i <MapMaxX; i++)
+	        for (int j = 0; j <MapMaxY; j++)
+	        	if(i==0  || j==0 || i==(MapMaxX-1) || j==(MapMaxY-1) )
+	        		mapa[i][j]=Tile.WALL;
 	}
 	
 	public int getMapMaxX() {
@@ -59,7 +87,7 @@ public class Mapv2 {
 	public int getMapMaxY() {
 		return MapMaxY;
 	}
-	public tiles[][] getMap()
+	public Tile[][] getMap()
 	{
 		return mapa;
 	}
