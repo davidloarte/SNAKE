@@ -1,4 +1,4 @@
-package snake;
+package snake.map;
 
 public class MapTile {
 

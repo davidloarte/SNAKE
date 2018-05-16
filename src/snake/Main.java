@@ -1,5 +1,8 @@
 package snake;
 
+import snake.map.Map;
+import snake.map.MapTile;
+
 public class Main {
 
 	public static void main(String[] args) {

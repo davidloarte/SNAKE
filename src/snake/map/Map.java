@@ -1,10 +1,11 @@
 /**
  * 
  */
-package snake;
+package snake.map;
 
 import java.util.Random;
-import snake.MapTile.Tile;
+
+import snake.map.MapTile.Tile;
 
 /**
  * @author agarcia
