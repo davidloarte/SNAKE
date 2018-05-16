@@ -7,6 +7,6 @@ public class MapTile {
 	}
 	
 	// Enum of the different tiles we may have
-	public enum Tile {WALL, SNAKE, OBSTACLE, FOOD, UNFILLED};
+	public enum Tile {UNFILLED, WALL, FOOD, OBSTACLE, SNAKE};
 
 }
