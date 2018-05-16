@@ -6,7 +6,7 @@ public class Main {
 		//Map miMapa = new Map();
 		//miMapa.map();
 		
-		Mapv2 mapa = new Mapv2(10,12);
+		Map mapa = new Map(10,12);
 		System.out.println( "max X: "+ mapa.getMapMaxX());
 		System.out.println( "max Y: "+ mapa.getMapMaxY());
 		//System.out.println( "max X: "+ mapa.generateFood() );
